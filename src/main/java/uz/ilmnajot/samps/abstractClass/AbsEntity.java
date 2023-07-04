@@ -10,9 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Setter
@@ -27,15 +24,15 @@ public class AbsEntity {
     private Long id;
 
     @CreationTimestamp
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    private Timestamp updatedAt;
+    private LocalDateTime updatedAt;
 
     @CreatedBy
-    private Timestamp createdBy;
+    private LocalDateTime createdBy;
 
     @LastModifiedBy
-    private Timestamp updatedBy;
+    private LocalDateTime updatedBy;
 }
 

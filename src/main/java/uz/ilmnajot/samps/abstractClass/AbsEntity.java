@@ -9,21 +9,25 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @MappedSuperclass
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class) // without this, annotations under will not work;
 public class AbsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @CreationTimestamp
-    private Timestamp createdAt;
+    private LocalDate createdAt;
 
     @UpdateTimestamp
     private Timestamp updatedAt;

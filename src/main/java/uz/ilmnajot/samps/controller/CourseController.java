@@ -1,6 +1,5 @@
 package uz.ilmnajot.samps.controller;
 
-import jakarta.persistence.Lob;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,7 @@ public class CourseController {
 
     @GetMapping("/{id}")
     public HttpEntity<?> getCourse(@RequestParam Long id) {
-        Object course = courseService.getCourse(id);
+        Course course = courseService.getCourse(id);
         return ResponseEntity.ok(course);
     }
 

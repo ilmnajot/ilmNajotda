@@ -7,15 +7,15 @@ import uz.ilmnajot.samps.entity.User;
 
 import java.util.Optional;
 
-public class SpringSecurityAuditAwareimpl implements AuditorAware<Long> {
+public class SpringSecurityAuditAwareimpl implements AuditorAware<String> {
     @Override
-    public Optional<Long> getCurrentAuditor() {
+    public Optional<String> getCurrentAuditor() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication!=null &&
                 authentication.isAuthenticated() &&
                 !authentication.getPrincipal().equals("anonymousUser")) {
             User user = (User) authentication.getPrincipal();
-            return Optional.of(user.getId());
+            return Optional.of(user.getUsername());
         }
         return Optional.empty();
     }

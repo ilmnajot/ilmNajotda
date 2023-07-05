@@ -9,7 +9,7 @@ import java.util.List;
 public interface CourseService {
     ApiResponse saveCourse(CourseDTO courseDTO);
 
-    Object getCourse(Long id);
+    Course getCourse(Long id);
 
     List<Course> getCourses();
 

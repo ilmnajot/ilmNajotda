@@ -2,21 +2,19 @@ package uz.ilmnajot.samps.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.ilmnajot.samps.abstractClass.AbsEntity;
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "course")
+@Entity(name = "courses")
 @Getter
 @Setter
 public class Course extends AbsEntity {
-
-
+    
     private String name;
 
     private String description;

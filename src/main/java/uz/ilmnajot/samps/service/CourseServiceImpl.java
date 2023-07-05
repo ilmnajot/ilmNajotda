@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import uz.ilmnajot.samps.apiResponse.ApiResponse;
 import uz.ilmnajot.samps.dto.CourseDTO;
 import uz.ilmnajot.samps.entity.Course;
+import uz.ilmnajot.samps.exception.CourseNotFoundException;
 import uz.ilmnajot.samps.repository.CourseRepository;
 
 import java.util.List;
@@ -21,7 +22,9 @@ public class CourseServiceImpl implements CourseService {
     public ApiResponse saveCourse(CourseDTO courseDTO) {
         Optional<Course> optionalCourse = courseRepository.findByName(courseDTO.getName());
         if (optionalCourse.isPresent()) {
-            return new ApiResponse("you have already registered to this course", false);
+            throw new CourseNotFoundException("you have already registered to this course");
+//            return new ApiResponse("you have already registered to this course", false);
+            // Api Response qilish kerak yoki custom exception yasaladi!
         }
         Course course = new Course(
                 courseDTO.getName(),

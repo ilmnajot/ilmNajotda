@@ -1,6 +1,5 @@
 package uz.ilmnajot.samps.service;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -10,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import uz.ilmnajot.samps.apiResponse.ApiResponse;
-import uz.ilmnajot.samps.dto.LoginDTO;
 import uz.ilmnajot.samps.dto.RegisterDTO;
 import uz.ilmnajot.samps.entity.User;
 import uz.ilmnajot.samps.enums.RoleName;
@@ -39,11 +37,10 @@ public class AuthService implements UserDetailsService {
     public Boolean sendMail(String username, String emailCode) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("samarkandps@gmail.com");
+            message.setFrom("no-reply2023@gmail.com");
             message.setTo(username);
             message.setSubject("verify the account");
             message.setText(emailCode);
-
             javaMailSender.send(message);
             return true;
         } catch (Exception e) {

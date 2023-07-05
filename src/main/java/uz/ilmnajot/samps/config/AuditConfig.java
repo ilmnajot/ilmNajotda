@@ -10,7 +10,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class AuditConfig {
 
     @Bean
-    AuditorAware<Long> auditorAware() {
+    AuditorAware<String> auditorAware() {
         return new SpringSecurityAuditAwareimpl();
     }
+
+
+    //USTOZ IKKITA SAVOL:
+
+    // 1. MEN BOYA EXCEPTION YOZGANDIM, ApiReponse ni o'rniga exception tashlagan yaxshimi yoki responsemi?
 }

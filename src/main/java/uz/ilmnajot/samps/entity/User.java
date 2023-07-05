@@ -11,13 +11,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import uz.ilmnajot.samps.abstractClass.AbsEntity;
 import uz.ilmnajot.samps.enums.RoleName;
 
-import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
+@Entity(name = "users")
 @Setter
 @Getter
 @AllArgsConstructor

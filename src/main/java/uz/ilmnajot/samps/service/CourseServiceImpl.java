@@ -36,13 +36,18 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<Course> getCourses() {
-        return courseRepository.findAll();
+        return courseRepository.findAllByDeletedFalse();
     }
 
     @Override
     public ApiResponse deleteCourse(Long courseId) {
-        courseRepository.deleteById(courseId);
-
+        Optional<Course> optionalCourse = courseRepository.findById(courseId);
+        if (optionalCourse.isPresent()) {
+            Course course = optionalCourse.get();
+            course.setDeleted(true);
+            courseRepository.save(course);
+        }
+        throw new RuntimeException("Course not found!");
     }
 
     @Override

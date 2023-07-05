@@ -22,7 +22,7 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends AbsEntity implements UserDetails {
+public class User extends AbsEntity implements UserDetails { //BUNI KO'CHIRISH
 
     @Column(nullable = false)
     private String fullName;
